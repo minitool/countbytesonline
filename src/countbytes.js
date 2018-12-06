@@ -1,6 +1,6 @@
 function getUTF8Length(s) {
   if (!s.length) return 0;
-  const len = 0;
+  let len = 0;
   for (var i = 0; i < s.length; i++) {
     var code = s.charCodeAt(i);
     if (code <= 0x7f) {
