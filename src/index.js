@@ -1,17 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import "./styles.css";
+import './styles.css';
+import { getUTF8Length } from './countbytes';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox1</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <input type="file" id="files" name="file[]" />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      textContent: '',
+      numberOfBytes: 0
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ textContent: event.target.value });
+    this.setState({ numberOfBytes: getUTF8Length(this.state.textContent) });
+  }
+
+  render() {
+    return (
+      <div>
+        <textarea value={this.state.value} onChange={this.handleChange} />
+        <div>
+          <span>Number of bytes is: {this.state.numberOfBytes}</span>
+        </div>
+      </div>
+    );
+  }
 }
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
