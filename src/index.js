@@ -12,19 +12,28 @@ class App extends React.Component {
       numberOfBytes: 0
     };
     this.handleChange = this.handleChange.bind(this);
+    this.getBytesOfText = this.getBytesOfText.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ textContent: event.target.value });
-    this.setState({ numberOfBytes: getUTF8Length(this.state.textContent) });
+    const inputText = event.target.value;
+    this.setState({ textContent: inputText });
+    this.getBytesOfText(inputText);
+  }
+
+  getBytesOfText(text) {
+    const bytes = getUTF8Length(text);
+    this.setState({ numberOfBytes: bytes });
   }
 
   render() {
     return (
       <div>
-        <textarea value={this.state.value} onChange={this.handleChange} />
+        <textarea value={this.state.textContent} onChange={this.handleChange} />
         <div>
           <span>Number of bytes is: {this.state.numberOfBytes}</span>
+          <br />
+          <span>The text is: {this.state.textContent}</span>
         </div>
       </div>
     );
