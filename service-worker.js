@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/countbytesonline/precache-manifest.2c1ad360fc2065c605d7b631a993585a.js"
+  "/countbytesonline/precache-manifest.2a9f24ec87843d0e6d1e2df86f3d5a19.js"
 );
 
 workbox.clientsClaim();
