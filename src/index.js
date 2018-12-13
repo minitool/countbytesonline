@@ -27,13 +27,23 @@ class App extends React.Component {
   }
 
   render() {
+    const centerDiv = {
+      margin: '0 auto',
+    }
+    const styleContainer = {
+      width: '30%',
+      ...centerDiv
+    }
+    const styleArea = {
+      width: '100%',
+      ...centerDiv
+    }
     return (
-      <div>
-        <textarea value={this.state.textContent} onChange={this.handleChange} />
+      <div className="container" style= {styleContainer}>
+        <textarea value={this.state.textContent} onChange={this.handleChange} style= {styleArea} />
         <div>
           <span>Number of bytes is: {this.state.numberOfBytes}</span>
           <br />
-          <span>The text is: {this.state.textContent}</span>
         </div>
       </div>
     );
